@@ -10,7 +10,9 @@ import cors from 'cors';
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173', 
+}))
 
 const port = process.env.PORT || 4000;
 
@@ -24,7 +26,7 @@ app.get('/',(req,res)=>{
 app.use('/api/event-types',eventRouter);
 app.use('/api/availability',availabilityRouter);
 app.use('/api/booking',bookingRouter);
-app.use('/api/meeting',meetingRouter);
+app.use('/api/meetings',meetingRouter);
 
 
 

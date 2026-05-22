@@ -1,5 +1,5 @@
 import express from 'express';
-import { createEventType, deleteEventType, getEventTypes, updateEventType } from '../controllers/eventControllers.js';
+import { createEventType, deleteEventType, getEventBySlug, getEventTypes, updateEventType } from '../controllers/eventControllers.js';
 
 const eventRouter = express.Router();
 
@@ -10,5 +10,6 @@ eventRouter.get('/',getEventTypes);
 eventRouter.post('/',createEventType)
 eventRouter.put('/:id',updateEventType);
 eventRouter.delete('/:id',deleteEventType);
+eventRouter.get('/slug/:slug',getEventBySlug);
 
 export {eventRouter};

@@ -102,3 +102,35 @@ export const deleteEventType = async(req,res)=>{
         .json({message:"failed to delete the event type"}); 
     }
 }
+
+export const getEventBySlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const query = `
+      SELECT *
+      FROM event_types
+      WHERE slug = ?
+    `;
+
+    const [events] = await db.execute(
+      query,
+      [slug]
+    );
+
+    if (events.length === 0) {
+      return res.status(404).json({
+        message: "Event not found",
+      });
+    }
+
+    return res.status(200).json(events[0]);
+
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      message: "Failed to fetch event",
+    });
+  }
+};
