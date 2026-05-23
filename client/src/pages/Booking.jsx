@@ -159,7 +159,7 @@ function Booking() {
             Select Time
           </h2>
 
-          <div className="space-y-3 max-h-[300px] overflow-y-auto">
+          <div className="space-y-3 max-h-75 overflow-y-auto">
             {availableSlots.length ===
             0 ? (
               <p className="text-gray-500">

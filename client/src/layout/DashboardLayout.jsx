@@ -7,7 +7,7 @@ function DashboardLayout() {
   return (
     <div className="flex min-h-screen bg-[#F8F9FB]">
       {/* Sidebar */}
-      <aside className="hidden md:flex w-[260px] bg-white border-r border-gray-200 flex-col justify-between">
+      <aside className="hidden md:flex w-65 bg-white border-r border-gray-200 flex-col justify-between">
         <div>
           {/* Logo */}
           <div className="h-20 px-8 flex items-center border-b">
