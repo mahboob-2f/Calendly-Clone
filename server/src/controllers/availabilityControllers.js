@@ -116,3 +116,31 @@ export const deleteAvailability = async (req, res) => {
     });
   }
 };
+
+export const getAvailabilityByDay = async (req, res) => {
+  try {
+    const { day } = req.params;
+
+    const query = `
+      SELECT *
+      FROM availability
+      WHERE day_of_week = ?
+    `;
+
+    const [availability] = await db.execute(query, [day]);
+
+    if(availability.length===0){
+        return res.status(404).json({
+            message:"No availability found for the specified day"
+        });
+    }
+    return res.status(200).json(availability);
+
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      message: "Failed to fetch availability",
+    });
+  }
+};

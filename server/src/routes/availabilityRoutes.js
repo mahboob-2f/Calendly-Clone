@@ -1,5 +1,5 @@
 import express from 'express'; 
-import { createAvailability, deleteAvailability, getAvailability, updateAvailability } from '../controllers/availabilityControllers.js';
+import { createAvailability, deleteAvailability, getAvailability, getAvailabilityByDay, updateAvailability } from '../controllers/availabilityControllers.js';
 
 
 
@@ -9,6 +9,7 @@ availabilityRouter.get("/", getAvailability);
 availabilityRouter.post("/", createAvailability);
 availabilityRouter.put('/:id',updateAvailability);
 availabilityRouter.delete('/:id',deleteAvailability);
+availabilityRouter.get('/day/:day',getAvailabilityByDay);
 
 
 export {availabilityRouter};

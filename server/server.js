@@ -25,8 +25,8 @@ app.get('/',(req,res)=>{
 
 app.use('/api/event-types',eventRouter);
 app.use('/api/availability',availabilityRouter);
-app.use('/api/booking',bookingRouter);
-app.use('/api/meetings',meetingRouter);
+app.use('/api/booking',bookingRouter); // public booking route
+app.use('/api/meetings',meetingRouter);  // protected meeting route 
 
 
 

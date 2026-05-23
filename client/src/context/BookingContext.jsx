@@ -6,7 +6,8 @@ export const BookingContext = createContext();
 export const BookingContextProvider = ({ children }) => {
   const [eventDetails, setEventDetails] = useState(null);
 
-  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [availableSlots, setAvailableSlots] = useState([]);
 
   const [selectedTime, setSelectedTime] = useState("");
 
@@ -24,13 +25,27 @@ export const BookingContextProvider = ({ children }) => {
 
   const createBooking = async (bookingData) => {
     try {
-      await api.post("/bookings", bookingData);
+      await api.post("/booking", bookingData);
 
       setBookingSuccess(true); 
     } catch (error) {
       console.log(error);
+      alert(
+      error?.response?.data?.message ||
+      "Booking failed"
+    ); // added error display
     }
   };
+  const getAvailabilityByDay = async (day) => {
+  try {
+    const response = await api.get(`/availability/day/${day}`);
+
+    return response.data;
+
+  } catch (error) {
+    console.log(error);
+  }
+};
 
   return (
     <BookingContext.Provider
@@ -45,6 +60,10 @@ export const BookingContextProvider = ({ children }) => {
 
         getEventBySlug,
         createBooking,
+
+        availableSlots,
+        setAvailableSlots,
+        getAvailabilityByDay
       }}
     >
       {children}

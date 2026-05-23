@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { MeetingContext } from "../context/MeetingContext";
 
 function Meetings() {
-  const {meetings, getMeetings,} = useContext(MeetingContext);
+  const {meetings, getMeetings,cancelMeeting} = useContext(MeetingContext);
 
   useEffect(() => {
     getMeetings();
@@ -24,6 +24,7 @@ function Meetings() {
   return (
     <div>
       <h1>Meetings</h1>
+ 
 
       <h2>Upcoming Meetings</h2>
 
