@@ -30,7 +30,7 @@ function EventCard({ event }) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(
-      `https://calendly-backend-8kb6.onrender.com/book/${event.slug}`
+      `${import.met.env.VITE_FRONTEND_URL}/book/${event.slug}`
     );
 
     alert("Link copied!");
