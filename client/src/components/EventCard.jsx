@@ -30,7 +30,7 @@ function EventCard({ event }) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(
-      `http://localhost:5173/book/${event.slug}`
+      `${import.meta.env.VITE_APP_BASE_URL}/book/${event.slug}`
     );
 
     alert("Link copied!");
