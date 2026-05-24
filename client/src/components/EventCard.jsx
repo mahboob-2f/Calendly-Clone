@@ -30,7 +30,7 @@ function EventCard({ event }) {
 
   const copyLink = () => {
     navigator.clipboard.writeText(
-      `${import.met.env.VITE_FRONTEND_URL}/book/${event.slug}`
+      `${import.meta.env.VITE_FRONTEND_URL}/book/${event.slug}`
     );
 
     alert("Link copied!");
